@@ -10,6 +10,7 @@ export const PageSection = styled.section`
   padding: 20px 0;
   border: 1px solid ${p => p.theme.colors.gray};
   border-radius: 4px;
+  text-align: center;
 `;
 
 export const Title = styled.h2`
@@ -22,6 +23,17 @@ export const BtnList = styled.ul`
   justify-content: center;
   gap: 5px;
   text-align: center;
+`;
+export const InfoList = styled.ul`
+  width: 250px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+`;
+export const InfoItem = styled.li`
+  width: 100%;
+  border-bottom: 1px solid gray;
 `;
 
 export const InfoBlock = styled.p`

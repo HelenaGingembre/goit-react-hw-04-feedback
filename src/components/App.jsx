@@ -6,6 +6,8 @@ import {
   Title,
   BtnList,
   Btn,
+  InfoList,
+  InfoItem,
   InfoBlock,
 } from './Statistics/Statistics.styled';
 
@@ -27,12 +29,19 @@ export class App extends Component {
     return totalValues.reduce((acc, value) => acc + value, 0);
   };
 
-  countPositiveFeedbackPercentage() {}
+  countPositiveFeedbackPercentage = (good, total) => {
+    return Math.round((good / total) * 100);
+  };
 
   render() {
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
     const options = Object.keys(this.state);
+    const percentFeedbackPositive = this.countPositiveFeedbackPercentage(
+      good,
+      total
+    );
+
     return (
       <>
         <PageSection>
@@ -55,28 +64,33 @@ export class App extends Component {
         <PageSection>
           <h2>Statistics</h2>
           {total > 0 ? (
-            <ul>
-              <li>
+            <InfoList>
+              <InfoItem>
                 <InfoBlock>
                   Good: <span>{good}</span>
                 </InfoBlock>
-              </li>
-              <li>
+              </InfoItem>
+              <InfoItem>
                 <InfoBlock>
                   Neutral: <span>{neutral}</span>
                 </InfoBlock>
-              </li>
-              <li>
+              </InfoItem>
+              <InfoItem>
                 <InfoBlock>
                   Bad: <span>{bad}</span>
                 </InfoBlock>
-              </li>
-              <li>
+              </InfoItem>
+              <InfoItem>
                 <InfoBlock>
                   Total: <span>{total}</span>
                 </InfoBlock>
-              </li>
-            </ul>
+              </InfoItem>
+              <InfoItem>
+                <InfoBlock>
+                  Positive feedback: <span>{percentFeedbackPositive}%</span>
+                </InfoBlock>
+              </InfoItem>
+            </InfoList>
           ) : (
             'There is no feedback'
           )}
