@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  margin: 0 auto;
   padding: 8px;
-  border: 1px solid ${p => p.theme.colors.black};
+  text-align: center;
+  align-items: center;
+`;
+export const PageSection = styled.section`
+  padding: 20px 0;
+  border: 1px solid ${p => p.theme.colors.gray};
   border-radius: 4px;
 `;
 
@@ -11,8 +17,9 @@ export const Title = styled.h2`
 `;
 
 export const List = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 100px);
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
   gap: 5px;
   text-align: center;
 `;

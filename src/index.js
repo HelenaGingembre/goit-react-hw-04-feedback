@@ -8,6 +8,7 @@ const theme = {
   colors: {
     black: 'black',
     white: 'white',
+    gray: 'rgb(204, 204, 204)',
     accent: '#4298f9',
     hover: 'linear-gradient(rgb(93, 196, 255), rgb(255, 250, 102))',
   },
