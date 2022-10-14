@@ -16,7 +16,7 @@ export const Title = styled.h2`
   margin-bottom: 16px;
 `;
 
-export const List = styled.ul`
+export const BtnList = styled.ul`
   flex-direction: row;
   display: flex;
   justify-content: center;

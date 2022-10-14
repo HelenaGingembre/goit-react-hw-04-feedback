@@ -4,7 +4,7 @@ import {
   PageSection,
   // Wrapper,
   Title,
-  List,
+  BtnList,
   Btn,
   InfoBlock,
 } from './Statistics/Statistics.styled';
@@ -15,20 +15,29 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
+
   handleClick = key => {
     this.setState(prevState => ({
       [key]: prevState[key] + 1,
     }));
   };
 
+  countTotalFeedback = () => {
+    const totalValues = Object.values(this.state);
+    return totalValues.reduce((acc, value) => acc + value, 0);
+  };
+
+  countPositiveFeedbackPercentage() {}
+
   render() {
     const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
     const options = Object.keys(this.state);
     return (
       <>
         <PageSection>
           <Title>Please leave feedback</Title>
-          <List>
+          <BtnList>
             {options.map((option, index) => {
               const label =
                 option.split('')[0].toUpperCase() +
@@ -40,28 +49,37 @@ export class App extends Component {
                 </li>
               );
             })}
-          </List>
+          </BtnList>
         </PageSection>
         {/* <Statistics></Statistics> */}
         <PageSection>
           <h2>Statistics</h2>
-          <ul>
-            <li>
-              <InfoBlock>
-                Good: <span>{good}</span>
-              </InfoBlock>
-            </li>
-            <li>
-              <InfoBlock>
-                Neutral: <span>{neutral}</span>
-              </InfoBlock>
-            </li>
-            <li>
-              <InfoBlock>
-                Bad: <span>{bad}</span>
-              </InfoBlock>
-            </li>
-          </ul>
+          {total > 0 ? (
+            <ul>
+              <li>
+                <InfoBlock>
+                  Good: <span>{good}</span>
+                </InfoBlock>
+              </li>
+              <li>
+                <InfoBlock>
+                  Neutral: <span>{neutral}</span>
+                </InfoBlock>
+              </li>
+              <li>
+                <InfoBlock>
+                  Bad: <span>{bad}</span>
+                </InfoBlock>
+              </li>
+              <li>
+                <InfoBlock>
+                  Total: <span>{total}</span>
+                </InfoBlock>
+              </li>
+            </ul>
+          ) : (
+            'There is no feedback'
+          )}
         </PageSection>
       </>
     );
