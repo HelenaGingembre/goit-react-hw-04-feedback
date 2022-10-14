@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import { Section } from './Section/Section';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
-// import { Statistics } from './Statistics/Statistics';
-
-import {
-  Title,
-  BtnList,
-  Btn,
-  InfoList,
-  InfoItem,
-  InfoBlock,
-} from './Statistics/Statistics.styled';
+import { Statistics } from './Statistics/Statistics';
+import { Notification } from './Notification/Notification';
 
 export class App extends Component {
   state = {
@@ -38,7 +30,7 @@ export class App extends Component {
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
     const options = Object.keys(this.state);
-    const percentFeedbackPositive = this.countPositiveFeedbackPercentage(
+    const positivePercentage = this.countPositiveFeedbackPercentage(
       good,
       total
     );
@@ -46,40 +38,22 @@ export class App extends Component {
     return (
       <>
         <Section title="Please leave feedback">
-          <FeedbackOptions options={options} onClick={this.handleClick} />
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.handleClick}
+          />
         </Section>
-        {/* <Statistics></Statistics> */}
         <Section title="Statistics">
           {total > 0 ? (
-            <InfoList>
-              <InfoItem>
-                <InfoBlock>
-                  Good: <span>{good}</span>
-                </InfoBlock>
-              </InfoItem>
-              <InfoItem>
-                <InfoBlock>
-                  Neutral: <span>{neutral}</span>
-                </InfoBlock>
-              </InfoItem>
-              <InfoItem>
-                <InfoBlock>
-                  Bad: <span>{bad}</span>
-                </InfoBlock>
-              </InfoItem>
-              <InfoItem>
-                <InfoBlock>
-                  Total: <span>{total}</span>
-                </InfoBlock>
-              </InfoItem>
-              <InfoItem>
-                <InfoBlock>
-                  Positive feedback: <span>{percentFeedbackPositive}%</span>
-                </InfoBlock>
-              </InfoItem>
-            </InfoList>
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
+            ></Statistics>
           ) : (
-            'There is no feedback'
+            <Notification message="There is no feedback"></Notification>
           )}
         </Section>
       </>
