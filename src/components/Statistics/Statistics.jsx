@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 
-import { Title, Wrapper } from './Statistics.styled';
+import { Title, Wrapper, List, Btn, InfoBlock } from './Statistics.styled';
 
 export class Statistics extends Component {
   static defaultProps = {
@@ -17,34 +17,34 @@ export class Statistics extends Component {
       <section>
         <Wrapper>
           <Title>Please leave feedback</Title>
-          <ul>
+          <List>
             <li>
-              <button>Good</button>
+              <Btn>Good</Btn>
             </li>
             <li>
-              <button>Neutral</button>
+              <Btn>Neutral</Btn>
             </li>
             <li>
-              <button>Bad</button>
+              <Btn>Bad</Btn>
             </li>
-          </ul>
+          </List>
           <div>
             <h2>Statistics</h2>
             <ul>
               <li>
-                <p>
+                <InfoBlock>
                   Good: <span>3</span>
-                </p>
+                </InfoBlock>
               </li>
               <li>
-                <p>
+                <InfoBlock>
                   Neutral: <span>2</span>
-                </p>
+                </InfoBlock>
               </li>
               <li>
-                <p>
+                <InfoBlock>
                   Bad: <span>2</span>
-                </p>
+                </InfoBlock>
               </li>
             </ul>
           </div>
