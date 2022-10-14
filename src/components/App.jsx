@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Section } from './Section/Section';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 // import { Statistics } from './Statistics/Statistics';
+
 import {
-  PageSection,
-  // Wrapper,
   Title,
   BtnList,
   Btn,
@@ -44,25 +45,11 @@ export class App extends Component {
 
     return (
       <>
-        <PageSection>
-          <Title>Please leave feedback</Title>
-          <BtnList>
-            {options.map((option, index) => {
-              const label =
-                option.split('')[0].toUpperCase() +
-                option.split('').slice(1).join('');
-
-              return (
-                <li key={index}>
-                  <Btn onClick={() => this.handleClick(option)}>{label}</Btn>
-                </li>
-              );
-            })}
-          </BtnList>
-        </PageSection>
+        <Section title="Please leave feedback">
+          <FeedbackOptions options={options} onClick={this.handleClick} />
+        </Section>
         {/* <Statistics></Statistics> */}
-        <PageSection>
-          <h2>Statistics</h2>
+        <Section title="Statistics">
           {total > 0 ? (
             <InfoList>
               <InfoItem>
@@ -94,7 +81,7 @@ export class App extends Component {
           ) : (
             'There is no feedback'
           )}
-        </PageSection>
+        </Section>
       </>
     );
   }
