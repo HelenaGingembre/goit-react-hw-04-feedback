@@ -3,29 +3,22 @@ import PropTypes from 'prop-types';
 
 import { InfoList, InfoItem, InfoBlock } from './Statistics.styled';
 
-export const Statistics = ({
-  good,
-  neutral,
-  bad,
-  total,
-  positivePercentage,
-}) => {
-  //   const list = ['good', 'neutral', 'bad', 'total', 'positivePercentage'];
+export const Statistics = props => {
+  const { good, neutral, bad, total, positivePercentage } = props;
   return (
     <InfoList>
-      {/* {Object.values(props).map((item, index) => {
-        const labelItem =
-          item.split('')[0].toUpperCase() + item.split('').slice(1).join('');
+      {Object.keys(props).map((item, index) => {
+        // const labelItem = item;
 
         return (
           <InfoItem key={index}>
             <InfoBlock>
-              {labelItem}: <span>{item}</span>
+              {item}: <span>{props[item]}</span>
             </InfoBlock>
           </InfoItem>
         );
-      })} */}
-      <InfoItem>
+      })}
+      {/* <InfoItem>
         <InfoBlock>
           Good: <span>{good}</span>
         </InfoBlock>
@@ -49,8 +42,8 @@ export const Statistics = ({
       <InfoItem>
         <InfoBlock>
           Positive feedback: <span>{positivePercentage}%</span>
-        </InfoBlock>
-      </InfoItem>
+        </InfoBlock> */}
+      {/* </InfoItem> */}
     </InfoList>
   );
 };
