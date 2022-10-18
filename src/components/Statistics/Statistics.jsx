@@ -1,17 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { InfoList, InfoItem, InfoBlock } from './Statistics.styled';
+import { InfoList, InfoItem, InfoBlock, SpanText } from './Statistics.styled';
 
 export const Statistics = props => {
-  // const { good, neutral, bad, total, positivePercentage } = props;
   return (
     <InfoList>
       {Object.keys(props).map((item, index) => {
+        // console.log(item);
         return (
           <InfoItem key={index}>
             <InfoBlock>
-              {item}: <span>{props[item]}</span>
+              {item === 'positive' ? (
+                <SpanText>{'Positive Feedback'}</SpanText>
+              ) : (
+                <SpanText>{item}</SpanText>
+              )}
+              : <span>{props[item]}</span>
             </InfoBlock>
           </InfoItem>
         );
@@ -21,9 +26,11 @@ export const Statistics = props => {
 };
 
 Statistics.propTypes = {
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
-  positivePercentage: PropTypes.number.isRequired,
+  props: PropTypes.shape({
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    positivePercentage: PropTypes.number.isRequired,
+  }),
 };

@@ -18,3 +18,7 @@ export const InfoBlock = styled.p`
   gap: 4px;
   padding: 3px;
 `;
+
+export const SpanText = styled.span`
+  text-transform: capitalize;
+`;
