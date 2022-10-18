@@ -11,12 +11,10 @@ export const Statistics = props => {
         return (
           <InfoItem key={index}>
             <InfoBlock>
-              {item === 'positive' ? (
-                <SpanText>{'Positive Feedback'}</SpanText>
-              ) : (
-                <SpanText>{item}</SpanText>
-              )}
-              : <span>{props[item]}</span>
+              <SpanText>
+                {item === 'positive' ? 'Positive Feedback' : item}
+              </SpanText>
+              <span>{props[item]}</span>
             </InfoBlock>
           </InfoItem>
         );
