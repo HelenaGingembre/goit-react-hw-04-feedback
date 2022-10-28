@@ -13,7 +13,6 @@ export function App() {
   const [bad, setBad] = useState(0);
 
   const handleClick = options => {
-    // console.log('options!!!', options);
     switch (options) {
       case 'good':
         setGood(good + 1);
@@ -30,10 +29,20 @@ export function App() {
   };
 
   useEffect(() => {
-    countTotalFeedback = good + neutral + bad;
-    console.log('countTotalFeedback', good + neutral + bad);
+    countTotalFeedback = Number(good) + Number(neutral) + Number(bad);
+    console.log('countTotalFeedback', typeof countTotalFeedback);
+    // if (countTotalFeedback !== 0) {
+    //   positiveFeedbackPercentage = Math.round(
+    //     (Number(good) / countTotalFeedback) * 100
+    //   );
+    // }
+    // console.log('positiveFeedback', positiveFeedbackPercentage);
+  }, [good, neutral, bad]);
+
+  useEffect(() => {
     positiveFeedbackPercentage =
-      Math.round((good / countTotalFeedback) * 100) + '%';
+      Math.round((Number(good) / countTotalFeedback) * 100) + '%';
+
     console.log('positiveFeedback', positiveFeedbackPercentage);
   }, [good, neutral, bad]);
 
