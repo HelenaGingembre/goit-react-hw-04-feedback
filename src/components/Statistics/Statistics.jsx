@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import { InfoList, InfoItem, InfoBlock, SpanText } from './Statistics.styled';
 
-export const Statistics = props => {
+export const Statistics = ({ good, neutral, bad, total, positive }) => {
+  console.log('props', { good, neutral, bad, total, positive });
+  const props = { good, neutral, bad, total, positive };
   return (
     <InfoList>
       {Object.keys(props).map((item, index) => {

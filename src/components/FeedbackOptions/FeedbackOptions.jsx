@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import { BtnList, Btn } from './FeedbackOptions.styled';
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  // console.log('onLeaveFeedback:', onLeaveFeedback);
   return (
     <BtnList>
       {options.map((option, index) => {
-        const label =
-          option.split('')[0].toUpperCase() +
-          option.split('').slice(1).join('');
+        const label = option.toUpperCase();
+        // console.log('option:', option);
 
         return (
           <li key={index}>
