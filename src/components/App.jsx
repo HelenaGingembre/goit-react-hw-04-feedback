@@ -31,6 +31,10 @@ export function App() {
   useEffect(() => {
     countTotalFeedback = Number(good) + Number(neutral) + Number(bad);
     console.log('countTotalFeedback', typeof countTotalFeedback);
+    positiveFeedbackPercentage =
+      Math.round((Number(good) / countTotalFeedback) * 100) + '%';
+
+    console.log('positiveFeedback', positiveFeedbackPercentage + `з ${good}`);
     // if (countTotalFeedback !== 0) {
     //   positiveFeedbackPercentage = Math.round(
     //     (Number(good) / countTotalFeedback) * 100
@@ -39,12 +43,7 @@ export function App() {
     // console.log('positiveFeedback', positiveFeedbackPercentage);
   }, [good, neutral, bad]);
 
-  useEffect(() => {
-    positiveFeedbackPercentage =
-      Math.round((Number(good) / countTotalFeedback) * 100) + '%';
-
-    console.log('positiveFeedback', positiveFeedbackPercentage);
-  }, [good, neutral, bad]);
+  useEffect(() => {}, [good, neutral, bad]);
 
   return (
     <>
