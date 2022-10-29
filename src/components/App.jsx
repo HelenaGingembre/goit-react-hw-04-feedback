@@ -15,13 +15,13 @@ export function App() {
   const handleClick = options => {
     switch (options) {
       case 'good':
-        setGood(good + 1);
+        setGood(p => p + 1);
         break;
       case 'neutral':
-        setNeutral(neutral + 1);
+        setNeutral(p => p + 1);
         break;
       case 'bad':
-        setBad(bad + 1);
+        setBad(p => p + 1);
         break;
       default:
         break;
