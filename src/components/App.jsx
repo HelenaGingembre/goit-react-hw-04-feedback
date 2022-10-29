@@ -4,9 +4,6 @@ import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
 import { Notification } from './Notification/Notification';
 
-// let countTotalFeedback = 0;
-// let positiveFeedbackPercentage = 0;
-
 export const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
@@ -35,9 +32,6 @@ export const App = () => {
   const positiveFeedbackPercentage = () => {
     return Math.round((Number(good) / countTotalFeedback()) * 100) + '%';
   };
-  // console.log('positiveFeedback', positiveFeedbackPercentage + `з ${good}`);
-
-  // useEffect(() => {}, [good, neutral, bad]);
 
   return (
     <>
